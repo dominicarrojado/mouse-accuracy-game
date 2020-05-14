@@ -1,38 +1,429 @@
-.App {
+.app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.app > .main {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: overlay;
+}
+
+.app > .main > .wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  background-image: url('./assets/images/bg/dots.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s linear;
+}
+
+.view-menu,
+.view-starting,
+.view-ending {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 36px 24px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.view-menu .logo {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 69px;
+}
+
+.view-menu .label,
+.view-results .label {
+  margin-bottom: 10px;
+}
+
+.view-menu .tabs,
+.view-results .tabs {
+  display: inline-flex;
+  margin-bottom: 58px;
+}
+
+.view-menu .tabs > button,
+.view-results .tabs > button {
+  min-width: 110px;
+  border-width: 1px 1px 1px 0;
+  border-style: solid;
+  border-color: hsl(0, 0%, 36%);
+  padding: 7px 16px 6px;
+  color: #ffffff;
+  font-size: 13px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.1s ease-in-out;
+}
+
+.view-menu .tabs > button:first-child,
+.view-results .tabs > button:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-left-width: 1px;
+}
+
+.view-menu .tabs > button:last-child,
+.view-results .tabs > button:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.view-menu .tabs > button:hover,
+.view-menu .tabs > button.active,
+.view-results .tabs > button:hover,
+.view-results .tabs > button.active {
+  color: #44d62c;
+}
+
+.app > .main > .wrapper.view-starting,
+.app > .main > .wrapper.view-ending {
+  background-image: url('./assets/images/bg/dots-2.png');
+}
+
+.view-starting .helper,
+.view-starting .count,
+.view-ending .helper,
+.view-ending .count {
+  color: #44d62c;
+  font-family: 'RazerF5', 'Roboto', Arial, 'Microsoft YaHei New',
+    'Microsoft Yahei', '微软雅黑', 宋体, SimSun, STXihei, '华文细黑', sans-serif;
+  animation-duration: 3s;
+  animation-name: slideUp;
+  animation-fill-mode: both;
+}
+
+.view-starting .helper,
+.view-ending .helper {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.view-starting .count,
+.view-ending .count {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.app > .main > .wrapper.view-game {
+  transition-duration: 0.1s;
+}
+
+.view-game,
+.view-game .canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.view-game .canvas > .target {
+  position: absolute;
+  animation-duration: 4s;
+  animation-name: zoomInOut;
+  animation-fill-mode: both;
+  transition: opacity 0.2s linear;
+}
+
+.view-game .canvas > .target.target-2,
+.view-game .canvas > .target.target-4,
+.view-game .canvas > .target.target-6 {
+  animation-name: zoomInOut2;
+}
+
+.view-game .canvas > .target.hit {
+  pointer-events: none;
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+.view-game .canvas > .miss {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin-left: -12px;
+  margin-top: -14px;
+  color: #777777;
+  font-size: 30px;
+  line-height: 1;
+  animation-name: fadeOut;
+  animation-fill-mode: both;
+  animation-duration: 1.2s;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.view-game aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  padding: 36px 24px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  background-image: linear-gradient(-270deg, transparent 0%, #222222 100%);
+  pointer-events: none;
+}
+
+.view-game .stats {
+  text-align: right;
+}
+
+.view-game .stats > .label {
+  margin-bottom: 8px;
+  color: #747474;
+  font-family: 'RazerF5', 'Roboto', Arial, 'Microsoft YaHei New',
+    'Microsoft Yahei', '微软雅黑', 宋体, SimSun, STXihei, '华文细黑', sans-serif;
+}
+
+.view-game .stats > .value {
+  margin-bottom: 30px;
+  color: #999999;
+  font-size: 40px;
+  font-family: 'RazerF5', 'Roboto', Arial, 'Microsoft YaHei New',
+    'Microsoft Yahei', '微软雅黑', 宋体, SimSun, STXihei, '华文细黑', sans-serif;
+}
+
+.view-game .stats > .value:last-child {
+  margin-bottom: 0;
+}
+
+.view-game .stats > .value.timer {
+  color: #c8323c;
+}
+
+.view-game .btn {
+  min-width: 162px;
+  pointer-events: auto;
+}
+
+.view-ending .helper,
+.view-ending .count {
+  animation-duration: 2s;
+}
+
+.view-results {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.view-results > .container {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.view-results .stats-container {
+  padding: 36px 24px;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.view-results .stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 23px;
+  margin-bottom: 40px;
+}
+
+.view-results .stats > .item {
+  min-width: 310px;
+  margin: 10px;
+  border-radius: 4px;
+  padding: 16px 25px;
+  background-color: #181818;
+}
+
+.view-results .stats > .item > .title,
+.view-results .stats > .item > .info > .value,
+.view-results .stats > .item > .info > .desc {
+  font-family: 'RazerF5', 'Roboto', Arial, 'Microsoft YaHei New',
+    'Microsoft Yahei', '微软雅黑', 宋体, SimSun, STXihei, '华文细黑', sans-serif;
+}
+
+.view-results .stats > .item > .title {
+  margin-bottom: 10px;
+}
+
+.view-results .stats > .item > .info {
+  display: flex;
+  align-items: center;
+}
+
+.view-results .stats > .item > .info > .value {
+  margin-right: 20px;
+  color: #44d62c;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.view-results .stats > .item > .info > .desc {
+  color: #44d62c;
+}
+
+.view-results .social {
+  text-align: center;
+  animation-name: fadeIn;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+}
+
+.view-results .social > .label {
+  margin-bottom: 12px;
+}
+
+.view-results .social > .items {
+  display: flex;
+  justify-content: center;
+}
+
+.view-results .social > .items > button {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  cursor: pointer;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.view-results .social > .items > button:hover {
+  opacity: 0.8;
+}
+
+.view-results .social > .items > button:active {
+  opacity: 0.6;
+}
+
+.view-results .social > .items > .facebook {
+  background-image: url('./assets//images/logo/facebook.png');
+}
+
+.view-results .social > .items > .youtube {
+  background-image: url('./assets//images/logo/youtube.png');
+}
+
+.view-results .social > .items > .twitch {
+  background-image: url('./assets//images/logo/twitch.png');
+}
+
+.view-results .footer {
+  background-color: rgba(17, 17, 17, 0.44);
+  padding: 40px 24px;
+  text-align: center;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+.view-results .icon-restart {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-top: -4px;
+  margin-bottom: -2px;
+  margin-right: 16px;
+  background-image: url('./assets/images/icons/restart.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(0.5);
   }
-  to {
-    transform: rotate(360deg);
+
+  40% {
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes zoomInOut2 {
+  0% {
+    transform: scale(0.5);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(0.5);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  35% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  75% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  90% {
+    transform: translateY(15px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-150px);
+    opacity: 0;
   }
 }
