@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/razer-mouse-accuracy-game/static/css/main.0f5d3102.chunk.css",
-    "main.js": "/razer-mouse-accuracy-game/static/js/main.f55202f8.chunk.js",
-    "main.js.map": "/razer-mouse-accuracy-game/static/js/main.f55202f8.chunk.js.map",
+    "main.css": "/razer-mouse-accuracy-game/static/css/main.d0489823.chunk.css",
+    "main.js": "/razer-mouse-accuracy-game/static/js/main.b44e2ecf.chunk.js",
+    "main.js.map": "/razer-mouse-accuracy-game/static/js/main.b44e2ecf.chunk.js.map",
     "runtime-main.js": "/razer-mouse-accuracy-game/static/js/runtime-main.35da3805.js",
     "runtime-main.js.map": "/razer-mouse-accuracy-game/static/js/runtime-main.35da3805.js.map",
     "static/js/2.4b840316.chunk.js": "/razer-mouse-accuracy-game/static/js/2.4b840316.chunk.js",
     "static/js/2.4b840316.chunk.js.map": "/razer-mouse-accuracy-game/static/js/2.4b840316.chunk.js.map",
     "index.html": "/razer-mouse-accuracy-game/index.html",
-    "precache-manifest.9f4ea4a6e0dedc7acbf31003376d4f28.js": "/razer-mouse-accuracy-game/precache-manifest.9f4ea4a6e0dedc7acbf31003376d4f28.js",
+    "precache-manifest.ed0212c36e85873127169edcd60b6234.js": "/razer-mouse-accuracy-game/precache-manifest.ed0212c36e85873127169edcd60b6234.js",
     "service-worker.js": "/razer-mouse-accuracy-game/service-worker.js",
-    "static/css/main.0f5d3102.chunk.css.map": "/razer-mouse-accuracy-game/static/css/main.0f5d3102.chunk.css.map",
+    "static/css/main.d0489823.chunk.css.map": "/razer-mouse-accuracy-game/static/css/main.d0489823.chunk.css.map",
     "static/js/2.4b840316.chunk.js.LICENSE.txt": "/razer-mouse-accuracy-game/static/js/2.4b840316.chunk.js.LICENSE.txt",
     "static/media/1.png": "/razer-mouse-accuracy-game/static/media/1.8bff7fbf.png",
     "static/media/2.png": "/razer-mouse-accuracy-game/static/media/2.6a2f2ce0.png",
@@ -37,7 +37,7 @@
   "entrypoints": [
     "static/js/runtime-main.35da3805.js",
     "static/js/2.4b840316.chunk.js",
-    "static/css/main.0f5d3102.chunk.css",
-    "static/js/main.f55202f8.chunk.js"
+    "static/css/main.d0489823.chunk.css",
+    "static/js/main.b44e2ecf.chunk.js"
   ]
 }
