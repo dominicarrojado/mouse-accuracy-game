@@ -2,8 +2,12 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
+  width: 1280px;
+  height: 720px;
+  margin: auto;
+  border: 1px solid #5d5d5d;
 }
 
 .app > .main {
@@ -12,6 +16,19 @@
   margin: 0 auto;
   overflow-x: hidden;
   overflow-y: overlay;
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+.app.show > .main {
+  opacity: 1;
+}
+
+.app > .main > .wrapper::before,
+.app > .main > .wrapper::after {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .app > .main > .wrapper {
@@ -19,11 +36,32 @@
   width: 100%;
   min-height: 100%;
   margin: 0 auto;
-  background-image: url('./assets/images/bg/dots.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  transition: background-image 0.3s linear;
+}
+
+.app > .main > .wrapper::before,
+.app > .main > .wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: background-image 0.2s linear, opacity 0.2s linear;
+}
+
+.app > .main > .wrapper::before {
+  background-image: url('./assets/images/bg/main-1x.png');
+}
+
+.app > .main > .wrapper::after {
+  background-image: url('./assets/images/bg/main-layer-1x.png');
+  opacity: 0.4;
+}
+
+.app > .main > .wrapper.view-menu::after {
+  background-image: url('./assets/images/bg/menu-layer-1x.png');
+  opacity: 0.6;
 }
 
 .view-menu,
@@ -37,8 +75,8 @@
 }
 
 .view-menu .logo {
-  max-width: 100%;
-  height: auto;
+  width: 663px;
+  height: 215px;
   margin-bottom: 69px;
 }
 
@@ -56,28 +94,27 @@
 .view-menu .tabs > button,
 .view-results .tabs > button {
   min-width: 110px;
-  border-width: 1px 1px 1px 0;
-  border-style: solid;
-  border-color: hsl(0, 0%, 36%);
+  border: 1px solid #5d5d5d;
   padding: 7px 16px 6px;
   color: #ffffff;
   font-size: 13px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: color 0.1s ease-in-out;
+  transition: color 0.1s ease-in-out, border-color 0.1s ease-in-out;
 }
 
 .view-menu .tabs > button:first-child,
 .view-results .tabs > button:first-child {
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
-  border-left-width: 1px;
+  margin-right: -1px;
 }
 
 .view-menu .tabs > button:last-child,
 .view-results .tabs > button:last-child {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
+  margin-left: -1px;
 }
 
 .view-menu .tabs > button:hover,
@@ -87,9 +124,15 @@
   color: #44d62c;
 }
 
-.app > .main > .wrapper.view-starting,
-.app > .main > .wrapper.view-ending {
-  background-image: url('./assets/images/bg/dots-2.png');
+.view-menu .tabs > button.active,
+.view-results .tabs > button.active {
+  border-color: #737373;
+  z-index: 1;
+}
+
+.app > .main > .wrapper.view-starting::before,
+.app > .main > .wrapper.view-ending::before {
+  background-image: url('./assets/images/bg/starting-1x.png');
 }
 
 .view-starting .helper,
@@ -120,11 +163,14 @@
   transition-duration: 0.1s;
 }
 
-.view-game,
-.view-game .canvas {
-  position: relative;
-  width: 100%;
+.view-game {
+  display: flex;
   height: 100%;
+  position: relative;
+}
+
+.view-game .canvas {
+  flex: 1;
   overflow: hidden;
 }
 
@@ -133,13 +179,7 @@
   animation-duration: 4s;
   animation-name: zoomInOut;
   animation-fill-mode: both;
-  transition: opacity 0.2s linear;
-}
-
-.view-game .canvas > .target.target-2,
-.view-game .canvas > .target.target-4,
-.view-game .canvas > .target.target-6 {
-  animation-name: zoomInOut2;
+  transition: opacity 0.2s linear 0.5s;
 }
 
 .view-game .canvas > .target.hit {
@@ -164,9 +204,8 @@
 }
 
 .view-game aside {
-  position: fixed;
-  top: 0;
-  right: 0;
+  flex-shrink: 0;
+  width: 211px;
   height: 100%;
   padding: 36px 24px;
   display: flex;
@@ -174,6 +213,10 @@
   justify-content: space-between;
   background-image: linear-gradient(-270deg, transparent 0%, #222222 100%);
   pointer-events: none;
+  border-left: 1px solid #5d5d5d;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
 }
 
 .view-game .stats {
@@ -345,25 +388,32 @@
   background-size: 100%;
 }
 
-@keyframes zoomInOut {
-  0% {
-    transform: scale(0.5);
-  }
-
-  40% {
-    transform: scale(1);
-  }
-
-  80% {
-    transform: scale(0.5);
-  }
-
-  100% {
-    transform: scale(0);
-  }
+.app > .warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111111;
+  z-index: 2;
 }
 
-@keyframes zoomInOut2 {
+.app > .warning > .desc {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  padding: 0 15px;
+  text-align: center;
+  margin: auto;
+  color: #44d62c;
+  font-family: 'RazerF5', 'Roboto', Arial, 'Microsoft YaHei New',
+    'Microsoft Yahei', '微软雅黑', 宋体, SimSun, STXihei, '华文细黑', sans-serif;
+  font-size: 24px;
+}
+
+@keyframes zoomInOut {
   0% {
     transform: scale(0.5);
   }

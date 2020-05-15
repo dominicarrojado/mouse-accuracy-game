@@ -1,30 +1,42 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import './App.css';
-import logo from './assets/images/logo/whack-a-virus.png';
+import logo1x from './assets/images/logo/training-mode-virus-edition-1x.png';
+import logo2x from './assets/images/logo/training-mode-virus-edition-2x.png';
+import logo3x from './assets/images/logo/training-mode-virus-edition-3x.png';
 import target1 from './assets/images/targets/1.png';
 import target2 from './assets/images/targets/2.png';
 import target3 from './assets/images/targets/3.png';
 import target4 from './assets/images/targets/4.png';
 import target5 from './assets/images/targets/5.png';
 import target6 from './assets/images/targets/6.png';
+import splat from './assets/images/targets/splat.gif';
 import Button from './components/Button';
 import PreLoader from './components/PreLoader';
 
 const TIMER_MAX = 30000;
 const TIMER_MAX_S = TIMER_MAX / 1000;
 const DIFFICULTIES = ['easy', 'normal', 'hard'];
-const TARGET_SIZE = 172;
-const TARGET_SIZE_HALF = TARGET_SIZE / 2;
 const TARGET_DURATION = 4000;
-const TARGET_MAX_COUNT = {
-  easy: 42,
-  normal: 64,
-  hard: 96,
+const DIFFICULTY_PROPS = {
+  easy: {
+    targetSize: 150,
+    targetMaxCount: 42,
+    targetScore: 100,
+  },
+  normal: {
+    targetSize: 125,
+    targetMaxCount: 64,
+    targetScore: 200,
+  },
+  hard: {
+    targetSize: 100,
+    targetMaxCount: 96,
+    targetScore: 300,
+  },
 };
 
 function App() {
   const canvas = useRef();
-  const aside = useRef();
   const countdownRef = useRef();
   const targetsRef = useRef();
   const timerRef = useRef();
@@ -36,6 +48,7 @@ function App() {
   const [countdown, setCountdown] = useState(3);
   const [difficulty, setDifficulty] = useState('normal');
   const [targets, setTargets] = useState([]);
+  const [targetSize, setTargetSize] = useState(0);
   const [timer, setTimer] = useState(TIMER_MAX_S);
   const [score, setScore] = useState(0);
   const [misses, setMisses] = useState([]);
@@ -62,6 +75,7 @@ function App() {
   }, [difficulty]);
 
   useEffect(() => {
+    // Game logic
     if (view === 'game') {
       setTimer(TIMER_MAX_S);
       setTargets([]);
@@ -69,29 +83,37 @@ function App() {
       setScore(0);
       setCurrentDifficulty(difficultyRef.current);
 
-      const canvasWidth =
-        canvas.current.clientWidth - TARGET_SIZE - aside.current.clientWidth;
-      const canvasHeight = canvas.current.clientHeight - TARGET_SIZE;
-      const targetMaxCount = TARGET_MAX_COUNT[difficultyRef.current];
+      const diffProps = DIFFICULTY_PROPS[difficultyRef.current];
+      const tSize = diffProps.targetSize;
+
+      setTargetSize(tSize);
+
+      const canvasWidth = canvas.current.clientWidth - tSize;
+      const canvasHeight = canvas.current.clientHeight - tSize;
+      const { targetMaxCount } = diffProps;
       const targetInterval =
-        Math.floor((TIMER_MAX - TARGET_DURATION) / targetMaxCount / 10) * 10;
+        Math.floor((TIMER_MAX - TARGET_DURATION / 2) / targetMaxCount / 10) *
+        10;
       let lapse = 0;
       let targetCount = 0;
 
       function generatePosition() {
         const top = Math.floor(Math.random() * canvasHeight);
         const left = Math.floor(Math.random() * canvasWidth);
-        const target = targetsRef.current.find(
-          item =>
-            item.top - TARGET_SIZE_HALF <= top &&
-            item.top + TARGET_SIZE_HALF >= top &&
-            item.left - TARGET_SIZE_HALF <= left &&
-            item.left + TARGET_SIZE_HALF >= left &&
-            !item.hit &&
-            item.id + 4000 > lapse
-        );
 
-        if (target) {
+        // Make sure generated position is not taken
+        const positionTaken =
+          targetsRef.current.findIndex(
+            item =>
+              item.top - tSize <= top &&
+              item.top + tSize >= top &&
+              item.left - tSize <= left &&
+              item.left + tSize >= left &&
+              !item.hit &&
+              item.id + 4000 > lapse
+          ) !== -1;
+
+        if (positionTaken) {
           return generatePosition();
         }
 
@@ -99,10 +121,16 @@ function App() {
       }
 
       gameIntervalRef.current = setInterval(() => {
+        // Stop timer when window is not on focus
+        if (!document.hasFocus()) {
+          return;
+        }
+
         lapse += 10;
 
         if (lapse % targetInterval === 0 && targetCount !== targetMaxCount) {
-          const [type, image] = getRandomImage();
+          const [type, image] = getRandomTarget();
+
           setTargets([
             ...targetsRef.current,
             {
@@ -176,7 +204,13 @@ function App() {
       viewNode = (
         <>
           <div className="container">
-            <img src={logo} alt="Whack a Virus" className="logo" />
+            <img
+              src={logo1x}
+              srcSet={`${logo3x} 3x, ${logo2x} 2x, ${logo1x} 1x`}
+              alt="Training Mode: Virus Edition"
+              className="logo"
+              draggable={false}
+            />
             {difficultyNode}
             <div className="btns">
               <Button onClick={startGame} className="btn-green">
@@ -216,11 +250,13 @@ function App() {
             className="canvas"
             onMouseDown={e => {
               if (!e.target.closest('.target')) {
+                const canvasRect = canvas.current.getBoundingClientRect();
+
                 setMisses([
                   ...misses,
                   {
-                    top: e.pageY,
-                    left: e.pageX,
+                    top: e.pageY - canvasRect.top,
+                    left: e.pageX - canvasRect.left,
                   },
                 ]);
               }
@@ -229,12 +265,17 @@ function App() {
             {targets.map(target => (
               <img
                 key={target.id}
-                src={target.image}
+                src={!target.hit ? target.image : splat}
                 alt="target"
                 className={`target target-${target.type} ${
                   target.hit ? 'hit' : ''
                 }`}
-                style={{ top: target.top, left: target.left }}
+                style={{
+                  top: target.top,
+                  left: target.left,
+                  width: targetSize,
+                  height: targetSize,
+                }}
                 draggable={false}
                 onMouseDown={e => {
                   const { pageX, pageY } = e;
@@ -265,16 +306,18 @@ function App() {
                       setTargets(newTargets);
                     }
                   } else {
+                    const canvasRect = canvas.current.getBoundingClientRect();
+
                     setMisses([
                       ...misses,
                       {
-                        top: pageY,
-                        left: pageX,
+                        top: pageY - canvasRect.top,
+                        left: pageX - canvasRect.left,
                       },
                     ]);
                   }
 
-                  setScore(score + 100);
+                  setScore(score + DIFFICULTY_PROPS[difficulty].targetScore);
                 }}
               />
             ))}
@@ -288,7 +331,7 @@ function App() {
               </div>
             ))}
           </div>
-          <aside ref={aside}>
+          <aside>
             <div />
             <div className="stats">
               <div className="label">Timer</div>
@@ -392,7 +435,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className={`app ${mounted ? 'show' : ''}`}>
       <div className="main">
         <div className={`wrapper view-${view}`}>{viewNode}</div>
       </div>
@@ -413,7 +456,7 @@ function useCtx() {
   return [ctx, ref];
 }
 
-function getRandomImage() {
+function getRandomTarget() {
   const randomNum = Math.floor(Math.random() * 6);
   let image;
 
