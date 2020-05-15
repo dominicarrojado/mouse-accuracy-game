@@ -47,7 +47,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  transition: background-image 0.2s linear, opacity 0.2s linear;
+  transition: background-image 0.3s linear, opacity 0.3s linear;
 }
 
 .app > .main > .wrapper::before {
@@ -61,7 +61,6 @@
 
 .app > .main > .wrapper.view-menu::after {
   background-image: url('./assets/images/bg/menu-layer-1x.png');
-  opacity: 0.6;
 }
 
 .view-menu,
@@ -270,11 +269,16 @@
   justify-content: center;
 }
 
-.view-results .stats-container {
-  padding: 36px 24px;
+.view-results .stats-container,
+.view-results .social,
+.view-results .footer {
   animation-name: fadeIn;
   animation-duration: 1s;
   animation-fill-mode: both;
+}
+
+.view-results .stats-container {
+  padding: 36px 24px;
 }
 
 .view-results .stats {
@@ -322,9 +326,6 @@
 
 .view-results .social {
   text-align: center;
-  animation-name: fadeIn;
-  animation-duration: 1.5s;
-  animation-fill-mode: both;
 }
 
 .view-results .social > .label {
@@ -371,9 +372,6 @@
   background-color: rgba(17, 17, 17, 0.44);
   padding: 40px 24px;
   text-align: center;
-  animation-name: fadeIn;
-  animation-duration: 2s;
-  animation-fill-mode: both;
 }
 
 .view-results .icon-restart {

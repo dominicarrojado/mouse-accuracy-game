@@ -17,6 +17,7 @@ const TIMER_MAX = 30000;
 const TIMER_MAX_S = TIMER_MAX / 1000;
 const DIFFICULTIES = ['easy', 'normal', 'hard'];
 const TARGET_DURATION = 4000;
+const TARGET_HIT_FADE_DURATION = 700;
 const DIFFICULTY_PROPS = {
   easy: {
     targetSize: 150,
@@ -97,7 +98,7 @@ function App() {
       let lapse = 0;
       let targetCount = 0;
 
-      function generatePosition() {
+      function generatePosition(currentDate) {
         const top = Math.floor(Math.random() * canvasHeight);
         const left = Math.floor(Math.random() * canvasWidth);
 
@@ -109,12 +110,13 @@ function App() {
               item.top + tSize >= top &&
               item.left - tSize <= left &&
               item.left + tSize >= left &&
-              !item.hit &&
-              item.id + 4000 > lapse
+              (!item.hit || // Targets that are not hit
+                item.hitAt + TARGET_HIT_FADE_DURATION > currentDate) && // Targets that are hit but still animating
+              item.id + TARGET_DURATION > lapse // Targets that just spawned
           ) !== -1;
 
         if (positionTaken) {
-          return generatePosition();
+          return generatePosition(currentDate);
         }
 
         return { top, left };
@@ -134,7 +136,7 @@ function App() {
           setTargets([
             ...targetsRef.current,
             {
-              ...generatePosition(),
+              ...generatePosition(Date.now()),
               type,
               image,
               id: lapse,
@@ -301,6 +303,7 @@ function App() {
                       newTargets[index] = {
                         ...target,
                         hit: true,
+                        hitAt: Date.now(),
                       };
 
                       setTargets(newTargets);
