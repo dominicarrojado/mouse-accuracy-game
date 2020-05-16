@@ -8,6 +8,7 @@
   height: 720px;
   margin: auto;
   border: 1px solid #5d5d5d;
+  background-color: #111111;
 }
 
 .app > .main {
@@ -77,6 +78,31 @@
   width: 663px;
   height: 215px;
   margin-bottom: 69px;
+  transform: rotate(90deg) scale(0);
+  transition: transform 0.5s ease-in-out 0.25s;
+}
+
+.app.show .view-menu .logo {
+  transform: rotate(0) scale(1);
+}
+
+.view-menu .label,
+.view-menu .tabs,
+.view-menu .btns {
+  transition: transform 0.5s ease-in-out 0.5s, opacity 1s linear 0.5s;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.app.show .view-menu .label,
+.app.show .view-menu .tabs,
+.app.show .view-menu .btns {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.app.show .view-menu .btns {
+  transition-delay: 0.75s;
 }
 
 .view-menu .label,

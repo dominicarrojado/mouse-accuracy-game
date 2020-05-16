@@ -56,7 +56,11 @@ function App() {
   const [currentDifficulty, setCurrentDifficulty] = useState('normal');
 
   useEffect(() => {
-    setMounted(true);
+    if (document.readyState === 'complete') {
+      setMounted(true);
+    } else {
+      window.addEventListener('load', () => setMounted(true));
+    }
   }, []);
 
   useEffect(() => {
