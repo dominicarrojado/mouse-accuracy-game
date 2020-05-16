@@ -1,0 +1,31 @@
+.warning {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #222222;
+  z-index: 2;
+}
+
+.warning > .desc {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  padding: 0 15px;
+  text-align: center;
+  margin: auto;
+  color: #44d62c;
+  font-family: 'RazerF5', 'Roboto', Arial, 'Microsoft YaHei New',
+    'Microsoft Yahei', '微软雅黑', 宋体, SimSun, STXihei, '华文细黑', sans-serif;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 1280px), screen and (max-height: 720px) {
+  .warning {
+    display: block;
+  }
+}

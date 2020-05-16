@@ -12,6 +12,7 @@ import target6 from './assets/images/targets/6.png';
 import splat from './assets/images/targets/splat.gif';
 import Button from './components/Button';
 import PreLoader from './components/PreLoader';
+import Warning from './components/Warning';
 
 const TIMER_MAX = 30000;
 const TIMER_MAX_S = TIMER_MAX / 1000;
@@ -447,6 +448,7 @@ function App() {
         <div className={`wrapper view-${view}`}>{viewNode}</div>
       </div>
       {mounted ? <PreLoader /> : null}
+      <Warning />
     </div>
   );
 }

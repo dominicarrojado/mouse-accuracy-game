@@ -412,31 +412,6 @@
   background-size: 100%;
 }
 
-.app > .warning {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #111111;
-  z-index: 2;
-}
-
-.app > .warning > .desc {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 30px;
-  padding: 0 15px;
-  text-align: center;
-  margin: auto;
-  color: #44d62c;
-  font-family: 'RazerF5', 'Roboto', Arial, 'Microsoft YaHei New',
-    'Microsoft Yahei', '微软雅黑', 宋体, SimSun, STXihei, '华文细黑', sans-serif;
-  font-size: 24px;
-}
-
 @keyframes zoomInOut {
   0% {
     transform: scale(0.5);
