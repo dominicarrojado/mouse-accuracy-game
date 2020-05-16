@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "375266972bd21a4229beecd6d17a3e9c",
+    "revision": "fc73fb6918654a8d117253478d299c3c",
     "url": "/razer-mouse-accuracy-game/index.html"
   },
   {
-    "revision": "1c9f4ee97ab817434657",
-    "url": "/razer-mouse-accuracy-game/static/css/main.d0489823.chunk.css"
+    "revision": "30e4732a4650d1959861",
+    "url": "/razer-mouse-accuracy-game/static/css/main.05282623.chunk.css"
   },
   {
     "revision": "dc9690040867f74905a3",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/razer-mouse-accuracy-game/static/js/2.4b840316.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1c9f4ee97ab817434657",
-    "url": "/razer-mouse-accuracy-game/static/js/main.b44e2ecf.chunk.js"
+    "revision": "30e4732a4650d1959861",
+    "url": "/razer-mouse-accuracy-game/static/js/main.52132ec3.chunk.js"
   },
   {
     "revision": "3dd1b2f3681e0c8ec979",
