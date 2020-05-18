@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fc73fb6918654a8d117253478d299c3c",
+    "revision": "911bbec49d88abe39498f81b064ded21",
     "url": "/razer-mouse-accuracy-game/index.html"
   },
   {
