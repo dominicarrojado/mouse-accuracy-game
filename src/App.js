@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
+
 import './App.css';
+
 import logo1x from './assets/images/logo/training-mode-virus-edition-1x.png';
 import logo2x from './assets/images/logo/training-mode-virus-edition-2x.png';
 import logo3x from './assets/images/logo/training-mode-virus-edition-3x.png';
@@ -14,6 +16,9 @@ import Button from './components/Button';
 import PreLoader from './components/PreLoader';
 import Warning from './components/Warning';
 
+import { trackEventOnGA } from './lib/google-analytics';
+
+const ANALYTICS_LABEL = 'Razer Mouse Accuracy Game';
 const TIMER_MAX = 30000;
 const TIMER_MAX_S = TIMER_MAX / 1000;
 const DIFFICULTIES = ['easy', 'normal', 'hard'];
@@ -44,6 +49,7 @@ function App() {
   const timerRef = useRef();
   const difficultyRef = useRef();
   const gameIntervalRef = useRef();
+  const scoreRef = useRef();
   const [ctx, ctxRef] = useCtx();
   const [mounted, setMounted] = useState(false);
   const [view, setView] = useState('menu');
@@ -79,6 +85,10 @@ function App() {
   useEffect(() => {
     difficultyRef.current = difficulty;
   }, [difficulty]);
+
+  useEffect(() => {
+    scoreRef.current = score;
+  }, [score]);
 
   useEffect(() => {
     // Game logic
@@ -165,7 +175,7 @@ function App() {
     }
   }, [view]);
 
-  function startGame() {
+  function startGame(restart) {
     setView('starting');
 
     const interval = setInterval(() => {
@@ -181,11 +191,22 @@ function App() {
 
       setCountdown(newCountdown);
     }, 1000);
+
+    trackEventOnGA({
+      category: `${!restart ? '' : 're'}start_game`,
+      label: `${ANALYTICS_LABEL} (${difficultyRef.current})`,
+    });
   }
 
-  function endGame() {
+  function endGame(manual) {
     setView('ending');
     setTimeout(() => setView('results'), 2000);
+
+    trackEventOnGA({
+      category: `end_game_${!manual ? 'auto' : 'manual'}`,
+      label: `${ANALYTICS_LABEL} (${difficultyRef.current})`,
+      value: scoreRef.current,
+    });
   }
 
   const difficultyNode = (
@@ -220,7 +241,7 @@ function App() {
             />
             {difficultyNode}
             <div className="btns">
-              <Button onClick={startGame} className="btn-green">
+              <Button onClick={() => startGame(false)} className="btn-green">
                 Start Game
               </Button>
             </div>
@@ -427,7 +448,7 @@ function App() {
           <div className="footer">
             {difficultyNode}
             <div className="btns">
-              <Button className="btn-green" onClick={startGame}>
+              <Button className="btn-green" onClick={() => startGame(true)}>
                 <span className="icon-restart"></span>
                 Restart
               </Button>
