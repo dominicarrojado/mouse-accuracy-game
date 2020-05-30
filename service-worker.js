@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/razer-mouse-accuracy-game/precache-manifest.ccc2ea5168813b9a6a9eec6b0150f666.js"
+  "/razer-mouse-accuracy-game/precache-manifest.79ed162e26e8adca84ebb775e2136d22.js"
 );
 
 self.addEventListener('message', (event) => {
