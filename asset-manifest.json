@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/razer-mouse-accuracy-game/static/css/main.05282623.chunk.css",
-    "main.js": "/razer-mouse-accuracy-game/static/js/main.ac355082.chunk.js",
-    "main.js.map": "/razer-mouse-accuracy-game/static/js/main.ac355082.chunk.js.map",
+    "main.js": "/razer-mouse-accuracy-game/static/js/main.9ccc355b.chunk.js",
+    "main.js.map": "/razer-mouse-accuracy-game/static/js/main.9ccc355b.chunk.js.map",
     "runtime-main.js": "/razer-mouse-accuracy-game/static/js/runtime-main.35da3805.js",
     "runtime-main.js.map": "/razer-mouse-accuracy-game/static/js/runtime-main.35da3805.js.map",
     "static/js/2.4b840316.chunk.js": "/razer-mouse-accuracy-game/static/js/2.4b840316.chunk.js",
     "static/js/2.4b840316.chunk.js.map": "/razer-mouse-accuracy-game/static/js/2.4b840316.chunk.js.map",
     "index.html": "/razer-mouse-accuracy-game/index.html",
-    "precache-manifest.79ed162e26e8adca84ebb775e2136d22.js": "/razer-mouse-accuracy-game/precache-manifest.79ed162e26e8adca84ebb775e2136d22.js",
+    "precache-manifest.956fd44f6856bcfeb56eddefd116d020.js": "/razer-mouse-accuracy-game/precache-manifest.956fd44f6856bcfeb56eddefd116d020.js",
     "service-worker.js": "/razer-mouse-accuracy-game/service-worker.js",
     "static/css/main.05282623.chunk.css.map": "/razer-mouse-accuracy-game/static/css/main.05282623.chunk.css.map",
     "static/js/2.4b840316.chunk.js.LICENSE.txt": "/razer-mouse-accuracy-game/static/js/2.4b840316.chunk.js.LICENSE.txt",
@@ -38,6 +38,6 @@
     "static/js/runtime-main.35da3805.js",
     "static/js/2.4b840316.chunk.js",
     "static/css/main.05282623.chunk.css",
-    "static/js/main.ac355082.chunk.js"
+    "static/js/main.9ccc355b.chunk.js"
   ]
 }
