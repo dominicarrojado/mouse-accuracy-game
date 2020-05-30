@@ -5,7 +5,7 @@ export function trackEventOnGA(data) {
     return;
   }
 
-  window.gtag('event', 'play', {
+  window.gtag('event', 'click', {
     event_category: data.category,
     event_label: data.label,
     value: data.value,
