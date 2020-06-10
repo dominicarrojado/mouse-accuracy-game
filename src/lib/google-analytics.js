@@ -5,8 +5,8 @@ export function trackEventOnGA(data) {
     return;
   }
 
-  window.gtag('event', 'click', {
-    event_category: data.category,
+  window.gtag('event', data.action, {
+    event_category: 'game',
     event_label: data.label,
     value: data.value,
   });
