@@ -1,4 +1,4 @@
-export default [
+const images = [
   require('./bg/main-1x.png'),
   require('./bg/main-2x.png'),
   require('./bg/main-3x.png'),
@@ -26,3 +26,5 @@ export default [
   require('./targets/6.png'),
   require('./targets/splat.gif'),
 ];
+
+export default images;
