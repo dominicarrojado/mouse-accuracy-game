@@ -1,4 +1,4 @@
-# Razer Mouse Accuracy Game
+# Mouse Accuracy Game
 
 ![CI/CD](https://github.com/dominicarrojado/mouse-accuracy-game/workflows/CI/CD/badge.svg)
 
