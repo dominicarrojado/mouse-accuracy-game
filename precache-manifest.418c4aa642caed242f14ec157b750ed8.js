@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ce3d24256f7fe4a1b176c207fd3b6e9b",
+    "revision": "373def5cc8af3cecc1b4c78d218c6617",
     "url": "/mouse-accuracy-game/index.html"
   },
   {
-    "revision": "bb84e4ad824b1ef83ddc",
-    "url": "/mouse-accuracy-game/static/css/main.5d750616.chunk.css"
+    "revision": "2f96c4bfe034a2fb7f75",
+    "url": "/mouse-accuracy-game/static/css/main.2d6be835.chunk.css"
   },
   {
-    "revision": "dc9690040867f74905a3",
-    "url": "/mouse-accuracy-game/static/js/2.4b840316.chunk.js"
+    "revision": "4e6f2ad39d9c207f50a2",
+    "url": "/mouse-accuracy-game/static/js/2.0b442f60.chunk.js"
   },
   {
-    "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/mouse-accuracy-game/static/js/2.4b840316.chunk.js.LICENSE.txt"
+    "revision": "570d362d673dab785e62d2b8563e1118",
+    "url": "/mouse-accuracy-game/static/js/2.0b442f60.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bb84e4ad824b1ef83ddc",
-    "url": "/mouse-accuracy-game/static/js/main.b8d3ca62.chunk.js"
+    "revision": "2f96c4bfe034a2fb7f75",
+    "url": "/mouse-accuracy-game/static/js/main.fc0be0a4.chunk.js"
   },
   {
-    "revision": "b49cf5099e97380834b0",
-    "url": "/mouse-accuracy-game/static/js/runtime-main.d62bd1d9.js"
+    "revision": "d7598deab5e4e29f92fb",
+    "url": "/mouse-accuracy-game/static/js/runtime-main.74cd92b5.js"
   },
   {
     "revision": "8bff7fbfeab05b7a16402fcc54513d39",
