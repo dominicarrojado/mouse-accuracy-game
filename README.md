@@ -1,3 +1,9 @@
+# Razer Mouse Accuracy Game
+
+![CI/CD](https://github.com/dominicarrojado/mouse-accuracy-game/workflows/CI/CD/badge.svg)
+
+Whack-a-mole mini-game where you whack viruses instead of moles.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
