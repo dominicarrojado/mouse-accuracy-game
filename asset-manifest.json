@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/mouse-accuracy-game/static/css/main.81911641.chunk.css",
-    "main.js": "/mouse-accuracy-game/static/js/main.2bdc1b27.chunk.js",
-    "main.js.map": "/mouse-accuracy-game/static/js/main.2bdc1b27.chunk.js.map",
+    "main.css": "/mouse-accuracy-game/static/css/main.4f96a265.chunk.css",
+    "main.js": "/mouse-accuracy-game/static/js/main.a7445c39.chunk.js",
+    "main.js.map": "/mouse-accuracy-game/static/js/main.a7445c39.chunk.js.map",
     "runtime-main.js": "/mouse-accuracy-game/static/js/runtime-main.da325fee.js",
     "runtime-main.js.map": "/mouse-accuracy-game/static/js/runtime-main.da325fee.js.map",
     "static/js/2.85022706.chunk.js": "/mouse-accuracy-game/static/js/2.85022706.chunk.js",
     "static/js/2.85022706.chunk.js.map": "/mouse-accuracy-game/static/js/2.85022706.chunk.js.map",
     "index.html": "/mouse-accuracy-game/index.html",
-    "static/css/main.81911641.chunk.css.map": "/mouse-accuracy-game/static/css/main.81911641.chunk.css.map",
+    "static/css/main.4f96a265.chunk.css.map": "/mouse-accuracy-game/static/css/main.4f96a265.chunk.css.map",
     "static/js/2.85022706.chunk.js.LICENSE.txt": "/mouse-accuracy-game/static/js/2.85022706.chunk.js.LICENSE.txt",
     "static/media/1.png": "/mouse-accuracy-game/static/media/1.2fec114b.png",
     "static/media/2.png": "/mouse-accuracy-game/static/media/2.75359600.png",
@@ -35,7 +35,7 @@
   "entrypoints": [
     "static/js/runtime-main.da325fee.js",
     "static/js/2.85022706.chunk.js",
-    "static/css/main.81911641.chunk.css",
-    "static/js/main.2bdc1b27.chunk.js"
+    "static/css/main.4f96a265.chunk.css",
+    "static/js/main.a7445c39.chunk.js"
   ]
 }
