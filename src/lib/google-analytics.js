@@ -8,6 +8,7 @@ export function trackEventOnGA(data) {
   window.gtag('event', data.action, {
     event_category: 'game',
     event_label: data.label,
-    value: data.value,
+    game_difficulty: data.gameDifficulty,
+    game_score: data.gameScore,
   });
 }

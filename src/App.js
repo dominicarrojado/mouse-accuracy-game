@@ -194,7 +194,8 @@ function App() {
 
     trackEventOnGA({
       action: `game_${!restart ? '' : 're'}start`,
-      label: `${ANALYTICS_LABEL} - ${difficultyRef.current}`,
+      label: ANALYTICS_LABEL,
+      gameDifficulty: difficultyRef.current,
     });
   }
 
@@ -204,8 +205,9 @@ function App() {
 
     trackEventOnGA({
       action: `game_end_${!manual ? 'auto' : 'manual'}`,
-      label: `${ANALYTICS_LABEL} - ${difficultyRef.current}`,
-      value: scoreRef.current,
+      label: ANALYTICS_LABEL,
+      gameDifficulty: difficultyRef.current,
+      gameScore: scoreRef.current,
     });
   }
 
