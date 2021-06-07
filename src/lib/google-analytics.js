@@ -1,14 +1,14 @@
 import { isLocalhost } from '../serviceWorker';
 
 export function trackEventOnGA(data) {
-  if (typeof window.gtag !== 'function' || isLocalhost) {
+  if (isLocalhost) {
     return;
   }
 
-  window.gtag('event', data.action, {
-    event_category: 'game',
-    event_label: data.label,
-    game_difficulty: data.gameDifficulty,
-    game_score: data.gameScore,
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: data.event,
+    gameDifficulty: data.gameDifficulty,
+    gameScore: data.gameScore,
   });
 }

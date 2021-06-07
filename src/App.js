@@ -193,8 +193,7 @@ function App() {
     }, 1000);
 
     trackEventOnGA({
-      action: `game_${!restart ? '' : 're'}start`,
-      label: ANALYTICS_LABEL,
+      event: !restart ? 'game_start' : 'game_restart',
       gameDifficulty: difficultyRef.current,
     });
   }
@@ -204,8 +203,7 @@ function App() {
     setTimeout(() => setView('results'), 2000);
 
     trackEventOnGA({
-      action: `game_end_${!manual ? 'auto' : 'manual'}`,
-      label: ANALYTICS_LABEL,
+      event: !manual ? 'game_end_auto' : 'game_end_manual',
       gameDifficulty: difficultyRef.current,
       gameScore: scoreRef.current,
     });
