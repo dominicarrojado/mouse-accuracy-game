@@ -8,6 +8,7 @@ export function trackEventOnGA(data) {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     event: data.event,
+    projectTitle: data.projectTitle,
     gameDifficulty: data.gameDifficulty,
     gameScore: data.gameScore,
   });

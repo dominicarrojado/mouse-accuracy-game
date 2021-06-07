@@ -18,7 +18,7 @@ import Warning from './components/Warning';
 
 import { trackEventOnGA } from './lib/google-analytics';
 
-const ANALYTICS_LABEL = 'Razer Mouse Accuracy Game';
+const PROJECT_TITLE = 'Razer Mouse Accuracy Game';
 const TIMER_MAX = 30000;
 const TIMER_MAX_S = TIMER_MAX / 1000;
 const DIFFICULTIES = ['easy', 'normal', 'hard'];
@@ -194,6 +194,7 @@ function App() {
 
     trackEventOnGA({
       event: !restart ? 'game_start' : 'game_restart',
+      projectTitle: PROJECT_TITLE,
       gameDifficulty: difficultyRef.current,
     });
   }
@@ -204,6 +205,7 @@ function App() {
 
     trackEventOnGA({
       event: !manual ? 'game_end_auto' : 'game_end_manual',
+      projectTitle: PROJECT_TITLE,
       gameDifficulty: difficultyRef.current,
       gameScore: scoreRef.current,
     });
