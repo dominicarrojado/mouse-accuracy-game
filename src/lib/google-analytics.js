@@ -1,6 +1,6 @@
 import { isLocalhost } from '../serviceWorker';
 
-export function trackEventOnGA(data) {
+export function trackEvent(data) {
   if (isLocalhost) {
     return;
   }

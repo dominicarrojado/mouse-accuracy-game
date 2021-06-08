@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
+import { trackEvent } from './lib/google-analytics';
 
 import './App.css';
 
@@ -16,9 +17,7 @@ import Button from './components/Button';
 import PreLoader from './components/PreLoader';
 import Warning from './components/Warning';
 
-import { trackEventOnGA } from './lib/google-analytics';
-
-const PROJECT_TITLE = 'Razer Mouse Accuracy Game';
+const PROJECT_TITLE = 'Razer Training Mode: Virus Edition';
 const TIMER_MAX = 30000;
 const TIMER_MAX_S = TIMER_MAX / 1000;
 const DIFFICULTIES = ['easy', 'normal', 'hard'];
@@ -192,7 +191,7 @@ function App() {
       setCountdown(newCountdown);
     }, 1000);
 
-    trackEventOnGA({
+    trackEvent({
       event: !restart ? 'game_start' : 'game_restart',
       projectTitle: PROJECT_TITLE,
       gameDifficulty: difficultyRef.current,
@@ -203,7 +202,7 @@ function App() {
     setView('ending');
     setTimeout(() => setView('results'), 2000);
 
-    trackEventOnGA({
+    trackEvent({
       event: !manual ? 'game_end_auto' : 'game_end_manual',
       projectTitle: PROJECT_TITLE,
       gameDifficulty: difficultyRef.current,
@@ -237,7 +236,7 @@ function App() {
             <img
               src={logo1x}
               srcSet={`${logo3x} 3x, ${logo2x} 2x, ${logo1x} 1x`}
-              alt="Training Mode: Virus Edition"
+              alt={PROJECT_TITLE}
               className="logo"
               draggable={false}
             />
