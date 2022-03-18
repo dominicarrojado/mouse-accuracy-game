@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/mouse-accuracy-game/static/css/main.4f96a265.chunk.css",
-    "main.js": "/mouse-accuracy-game/static/js/main.34a97b16.chunk.js",
-    "main.js.map": "/mouse-accuracy-game/static/js/main.34a97b16.chunk.js.map",
-    "runtime-main.js": "/mouse-accuracy-game/static/js/runtime-main.da325fee.js",
-    "runtime-main.js.map": "/mouse-accuracy-game/static/js/runtime-main.da325fee.js.map",
-    "static/js/2.85022706.chunk.js": "/mouse-accuracy-game/static/js/2.85022706.chunk.js",
-    "static/js/2.85022706.chunk.js.map": "/mouse-accuracy-game/static/js/2.85022706.chunk.js.map",
+    "main.css": "/mouse-accuracy-game/static/css/main.8ae527ba.chunk.css",
+    "main.js": "/mouse-accuracy-game/static/js/main.5d651b35.chunk.js",
+    "main.js.map": "/mouse-accuracy-game/static/js/main.5d651b35.chunk.js.map",
+    "runtime-main.js": "/mouse-accuracy-game/static/js/runtime-main.9b402d28.js",
+    "runtime-main.js.map": "/mouse-accuracy-game/static/js/runtime-main.9b402d28.js.map",
+    "static/js/2.ddaacebe.chunk.js": "/mouse-accuracy-game/static/js/2.ddaacebe.chunk.js",
+    "static/js/2.ddaacebe.chunk.js.map": "/mouse-accuracy-game/static/js/2.ddaacebe.chunk.js.map",
     "index.html": "/mouse-accuracy-game/index.html",
-    "static/css/main.4f96a265.chunk.css.map": "/mouse-accuracy-game/static/css/main.4f96a265.chunk.css.map",
-    "static/js/2.85022706.chunk.js.LICENSE.txt": "/mouse-accuracy-game/static/js/2.85022706.chunk.js.LICENSE.txt",
+    "static/css/main.8ae527ba.chunk.css.map": "/mouse-accuracy-game/static/css/main.8ae527ba.chunk.css.map",
+    "static/js/2.ddaacebe.chunk.js.LICENSE.txt": "/mouse-accuracy-game/static/js/2.ddaacebe.chunk.js.LICENSE.txt",
     "static/media/1.png": "/mouse-accuracy-game/static/media/1.2fec114b.png",
     "static/media/2.png": "/mouse-accuracy-game/static/media/2.75359600.png",
     "static/media/3.png": "/mouse-accuracy-game/static/media/3.3704b142.png",
@@ -33,9 +33,9 @@
     "static/media/training-mode-virus-edition-3x.png": "/mouse-accuracy-game/static/media/training-mode-virus-edition-3x.19d6486e.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.da325fee.js",
-    "static/js/2.85022706.chunk.js",
-    "static/css/main.4f96a265.chunk.css",
-    "static/js/main.34a97b16.chunk.js"
+    "static/js/runtime-main.9b402d28.js",
+    "static/js/2.ddaacebe.chunk.js",
+    "static/css/main.8ae527ba.chunk.css",
+    "static/js/main.5d651b35.chunk.js"
   ]
 }
